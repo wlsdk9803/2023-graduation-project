@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+button {
+  background-color: #4c50bb;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 30px 10px;
+}
+#container {
+  border-radius: 10px;
+  border: 2px #cdcdcd solid;
+  margin: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+  flex-grow: 1;
+}
+#container::-webkit-scrollbar {
+  width: 10px;
+}
+#container::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+#container::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+#sseView {
+  color: #4c50bb;
+  margin: 0 0 0 10px;
+  font-weight: bold;
+  line-height: 2;
+}
