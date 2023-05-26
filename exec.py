@@ -81,7 +81,8 @@ def product_lists():
         #time.sleep(5)
     elem.send_keys(Keys.PAGE_DOWN)
 
-def textCrawling(list):
+def textCrawling():
+    list = []
     try:
         driver.find_element(By.CSS_SELECTOR, '#itemBrief > div > p.essential-info-more > a').click()
     except:
@@ -188,10 +189,10 @@ def textCrawling(list):
                 list.append(data)
                 
     # get_page_data() 
-    print(list)
+    return list
     
 
-def crawling(list):
+def crawling():
     createFolder('./images/')
     links = []
     detail_images = driver.find_elements(By.ID, "productDetail")
@@ -208,8 +209,10 @@ def crawling(list):
 
     speak_origin('상품 정보를 불러오고 있습니다. 잠시만 기다려주세요...')
 
-    textCrawling(list)
-    speak_origin('상품 텍스트 정보를 불러왔습니다. 이미지 정보를 불러오고 있으니 잠시만 기다려주세요.')
+    list = []
+    list = textCrawling()
+    speak_origin('상품 텍스트 정보를 불러왔습니다. 이미지 정보를 불러오고 있으니 잠시만 기다려주세요...')
+    return list
 
 
 # crawling
@@ -260,7 +263,7 @@ while True:
     checkKeyword = ''
 
     # 맥은 time.sleep 지우고 한번에 처리
-    speak_origin(f'검색을 원하는 키워드가 {name} 맞나요? 예, 아니오로 대답해주세요.')
+    speak_origin(f'검색을 원하는 키워드가 {name} 맞나요?')
 
     #음성 인식 (STT)
     def listen_object(recognizer, audio):
@@ -284,7 +287,7 @@ while True:
     del m0
     stop_listening0(wait_for_stop=False) #더 이상 듣지 않음
     
-    if(checkKeyword == '예' or checkKeyword == '네' or checkKeyword == '맞아요' or checkKeyword == '맞습니다' or checkKeyword == '맞아' or checkKeyword == '응 맞아' or checkKeyword == '응'):
+    if(checkKeyword == '예' or checkKeyword == '네' or checkKeyword == '맞아요' or checkKeyword == '네 맞아요' or checkKeyword == '네 맞아' or checkKeyword == '네 맞습니다' or checkKeyword == '맞습니다' or checkKeyword == '맞아' or checkKeyword == '응 맞아' or checkKeyword == '응'):
         speak_origin('검색 중입니다. 잠시만 기다려주세요.')
         break
     else:
@@ -404,9 +407,8 @@ if(chooseOption == '한 개' or chooseOption == '한개'):
 
     stop_listening3(wait_for_stop=False) #더 이상 듣지 않음
 
-    onelist = []
-    crawling(onelist)
-    print("onelist: ", onelist)
+    onelist=[]
+    onelist = crawling()
     driver.quit()
 
 elif(chooseOption == '두 개' or chooseOption == '두개'):
@@ -454,7 +456,7 @@ elif(chooseOption == '두 개' or chooseOption == '두개'):
     stop_listening4(wait_for_stop=False) #더 이상 듣지 않음
 
     list1 = []
-    textCrawling(list1)
+    list1 = textCrawling()
 
     driver.close()
     driver.switch_to.window(driver.window_handles[0])
@@ -462,6 +464,7 @@ elif(chooseOption == '두 개' or chooseOption == '두개'):
     r5= sr.Recognizer()
     m5 = sr.Microphone()
     secItem = None
+    speak_origin("첫번째 상품의 정보를 불러왔습니다.")
     speak_origin("두번째 상품의 번호를 말씀해주세요.")
 
     #음성 인식 (STT)
@@ -497,8 +500,9 @@ elif(chooseOption == '두 개' or chooseOption == '두개'):
     stop_listening5(wait_for_stop=False) #더 이상 듣지 않음
 
     list2 = []
-    textCrawling(list2)
+    list2 = textCrawling()
 
+    speak_origin("두번째 상품의 정보를 불러왔습니다.")
     driver.quit()
 
 
@@ -589,6 +593,8 @@ else:
         result = ' '.join(s for s in ocr_text)
         ocr_result.append(result)
 print(ocr_result)
+if(ocr_result != []):
+    speak_origin("상품 정보를 모두 불러왔습니다.")
 
 
 
