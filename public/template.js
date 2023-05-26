@@ -19,7 +19,7 @@ module.exports = {
                 <span style="padding-left: 50px">Eyescape</span>
                 <span
                   class="material-symbols-outlined"
-                  style="float: right; padding-right: 50px"
+                  style="float: right; padding-right: 50px;"
                 >
                   menu
                 </span>
@@ -27,17 +27,17 @@ module.exports = {
               <div style="display: flex; align-items: center; justify-content: center">
                 <img src="shopping.png" />
                 <div>
-                  <div style="color: #4c50bb; font-size: 64px; font-weight: bold;">
+                  <div style="color: #4c50bb; font-size: 64px; font-weight: bold; cursor: default">
                     Eyescape
                   </div>
-                  <div style="padding-top: 20px">
+                  <div style="padding-top: 20px; cursor: default">
                     시각적인 세계로 탈출할 수 있는 경험을 <br />시각 장애인들에게 제공합니다.
                   </div>
                 </div>
               </div>
         
               <div id="container">
-                <div style="color: #4c50bb; margin: 10px 10px 0 10px; font-weight: bold; line-height: 2;">
+                <div style="color: #4c50bb; margin: 10px 10px 0 10px; font-weight: bold; line-height: 2">
                   [Eyescape]환영합니다.
                 </div>
                 <div id="sseView"></div>

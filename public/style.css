@@ -16,6 +16,9 @@ button {
   cursor: pointer;
   margin: 30px 10px;
 }
+button:hover {
+  background-color: #383b8e;
+}
 #container {
   border-radius: 10px;
   border: 2px #cdcdcd solid;

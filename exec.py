@@ -209,6 +209,7 @@ def crawling(list):
     speak_origin('상품 정보를 불러오고 있습니다. 잠시만 기다려주세요...')
 
     textCrawling(list)
+    speak_origin('상품 텍스트 정보를 불러왔습니다. 이미지 정보를 불러오고 있으니 잠시만 기다려주세요.')
 
 
 # crawling
@@ -283,7 +284,7 @@ while True:
     del m0
     stop_listening0(wait_for_stop=False) #더 이상 듣지 않음
     
-    if(checkKeyword == '예' or checkKeyword == '네'):
+    if(checkKeyword == '예' or checkKeyword == '네' or checkKeyword == '맞아요' or checkKeyword == '맞습니다' or checkKeyword == '맞아' or checkKeyword == '응 맞아' or checkKeyword == '응'):
         speak_origin('검색 중입니다. 잠시만 기다려주세요.')
         break
     else:
@@ -588,6 +589,8 @@ else:
         result = ' '.join(s for s in ocr_text)
         ocr_result.append(result)
 print(ocr_result)
+
+
 
 
 # GPTchatBot
