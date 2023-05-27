@@ -27,6 +27,10 @@ from PIL import Image
 ## 여기까지 MAC 용
 
 #소리내 읽기 (TTS)
+def playsound_with_wait(file_name):
+    sound = AudioSegment.from_file(file_name, format='mp3')
+    play(sound)
+
 def speak_origin(text):
     print('[Eyescape]'+ text)
     # result.txt에 추가
@@ -42,7 +46,7 @@ def speak_origin(text):
     sound_with_altered_frame_rate.export(file_name, format='mp3')
 
     # 재생
-    playsound(file_name)
+    playsound_with_wait(file_name)
     if os.path.exists(file_name): # voice.mp3 파일 삭제 -> 권한 문제가 생겨서 제대로 안 될 수가 있어서
         os.remove(file_name)
 

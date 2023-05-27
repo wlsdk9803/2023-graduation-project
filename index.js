@@ -45,10 +45,10 @@ app.post("/create_process", (request, response, next) => {
     console.log("result.txt is created successfully.");
   });
 
-  // exec.py를 외부 프로세스로 실행합니다.
+  // exec.py를 외부 프로세스로 실행
   const pythonProcess = spawn("python", ["exec.py"]);
 
-  // result.txt 파일의 내용이 변할 때마다 sseClients에게 데이터를 전송합니다.
+  // result.txt 파일의 내용이 변할 때마다 sseClients에게 데이터를 전송
   fs.watch("./result.txt", (eventType, filename) => {
     fs.readFile("./result.txt", "utf8", function (err, data) {
       if (err) throw err;
@@ -59,12 +59,12 @@ app.post("/create_process", (request, response, next) => {
     });
   });
 
-  // 실행 중인 프로세스에서 에러가 발생한 경우 처리합니다.
+  // 실행 중인 프로세스에서 에러가 발생한 경우 처리
   pythonProcess.stderr.on("data", function (errData) {
     sseClients.send(errData.toString());
   });
 
-  // 실행 중인 프로세스가 종료되었을 경우 처리합니다.
+  // 실행 중인 프로세스가 종료되었을 경우 처리
   pythonProcess.on("exit", function (code) {
     console.log("exec.py 프로세스 종료 코드:", code);
   });
@@ -85,6 +85,10 @@ app.post("/exit_process", (request, response, next) => {
   // voice.mp3가 존재하면 삭제
   if (fs.existsSync("./voice.mp3")) {
     fs.unlinkSync("./voice.mp3");
+  }
+  // 크롬 자동제어가 존재하면 삭제
+  if (fs.existsSync("./chromedriver.exe")) {
+    fs.unlinkSync("./chromedriver.exe");
   }
 
   exec(command, function (err, stdout, stderr) {
