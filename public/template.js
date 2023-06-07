@@ -31,7 +31,7 @@ module.exports = {
                     Eyescape
                   </div>
                   <div style="padding-top: 20px; cursor: default">
-                    시각적인 세계로 탈출할 수 있는 경험을 <br />시각 장애인들에게 제공합니다.
+                  시각 장애인들을 음성의 세계로 초대하여<br/> 시각적인 세계에서 탈출할 수 있는 경험을 제공합니다.
                   </div>
                 </div>
               </div>
