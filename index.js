@@ -71,7 +71,7 @@ app.post("/create_process", (request, response, next) => {
 });
 
 app.post("/exit_process", (request, response, next) => {
-  // exec.py 실행 강제 종료
+  // exec.py 실행 강제 종료하고 exec.py에서 생성한 크롬 드라이버도 종료
   var exec = require("child_process").exec;
 
   var command;
@@ -86,17 +86,12 @@ app.post("/exit_process", (request, response, next) => {
   if (fs.existsSync("./voice.mp3")) {
     fs.unlinkSync("./voice.mp3");
   }
-  // 크롬 자동제어가 존재하면 삭제
-  if (fs.existsSync("./chromedriver.exe")) {
-    fs.unlinkSync("./chromedriver.exe");
-  }
 
   exec(command, function (err, stdout, stderr) {
     if (err) {
       console.error(err);
     }
     // stdout을 utf8로 인코딩
-    stdout = iconv.decode(stdout, "utf8");
     console.log(stdout);
     response.redirect("/");
   });

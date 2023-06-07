@@ -112,6 +112,9 @@ def textCrawling():
     except:
         pass
 
+    star = driver.find_element(By.CSS_SELECTOR, '#btfTab > ul.tab-contents > li.product-review.tab-contents__content > div > div.sdp-review__average.js_reviewAverageContainer > section.sdp-review__average__total-star > div.sdp-review__average__total-star__info > div.sdp-review__average__total-star__info-gray > div')
+    list.append("별점(평점): " + star.get_attribute('data-rating'))
+
     if(driver.find_element(By.CSS_SELECTOR, '.prod-shipping-fee-message > span').text != ""):
         shipping_fee = driver.find_element(By.CSS_SELECTOR, '.prod-shipping-fee-message > span').text
         list.append("배송비: " + shipping_fee)
@@ -654,19 +657,6 @@ def answer(recognizer,audio):
         except sr.RequestError as e:
             print('요청 실패 : {0}'.format(e))   
 
-
-
-# 소리내 읽기 (TTS)
-# def speak(text):
-#     print('[인공지능]'+ text)
-#     file_name = 'voice.mp3'
-#     tts = gTTS(text=text, lang='ko')
-#     tts.save(file_name)
-#     playsound(file_name)
-#     if os.path.exists(file_name): # voice.mp3 파일 삭제 -> 권한 문제가 생겨서 제대로 안 될 수가 있어서
-#         os.remove(file_name)
-    
-
 # 소리내 읽기 (TTS)
 def speak(text):
     print('[Eyescape]'+ text)
@@ -683,7 +673,7 @@ def speak(text):
     sound_with_altered_frame_rate.export(file_name, format='mp3')
 
     # 재생
-    playsound(file_name)
+    playsound_with_wait(file_name)
 
     # 파일 삭제
     if os.path.exists(file_name): # voice.mp3 
