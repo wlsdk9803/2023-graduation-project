@@ -47,19 +47,19 @@ https://github.com/wlsdk9803/2023-graduation-project/assets/103057334/084d6fe0-5
 
 <br><br>
 
-(1) Web Crawling
+**(1) Web Crawling**
 <br>
 Selenium 라이브러리의 Web Driver를 사용하여 구현한다. 크롤링을 하기 전, ‘더 보기’ 버튼을 누르고 스크롤을 가장 아래까지 내리는 등 크롤링 하기 위한 준비를 한다. 이후 크롤링을 할 때에는 HTML의 태그를 이용하여 필요한 정보만 크롤링한다. 텍스트를 추출하고 이미지 파일은 이후 OCR 처리를 위하여 따로 저장한다.
 <br><br>
 
-(2) OCR
+**(2) OCR**
 <br>
 크롤링을 통해 얻은 상품 이미지 내에 존재하는 문자를 텍스트로 추출하기 위해 사용한다. 다양한 문서 형식에 적용할 수 있으며 다양한 언어를 지원하는 CLOVA OCR을 응용하여 개발하였다.
 <br>
 이때 CLOVA OCR의 권장 해상도에 대한 제약을 해결하고자 이미지의 장축 길이가 1960px을 초과할 시 1960px 단위로 크롭하여 이미지를 다시 저장하도록 하였다. 이렇게 저장된 이미지에 OCR을 적용하도록 하여 더욱 정확한 상품 정보를 얻을 수 있도록 하였다.
 <br><br>
 
-(3) ChatGPT와 STT, TTS를 활용한 인공지능 음성 챗봇 구현
+**(3) ChatGPT와 STT, TTS를 활용한 인공지능 음성 챗봇 구현**
 <br>
 OpenAI에서 개발한 ChatGPT와 Google TTS API와 Google STT API를 결합한다. 시각 장애인의 말(음성)을 텍스트로 변환하기 위해 Google TTS API를 이용해 ChatGPT에 넣어주고, 알맞은 응답이 나오면 Google STT API를 이용해 해당 응답 텍스트를 다시 음성으로 들려주도록 하였다.
 <br>
